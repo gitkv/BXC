@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2, // Версия манифеста. Обязательная строка
+    "name": "BXC", // Название расширения
+    "description": "BXC chrome extension helper", // Описание расширения
+    "version": "1.0", // Версия расширения
+    // Указываем иконки. Требуются именно такие размеры
+    "icons": {
+        "64": "img/icon64.png"
+    },
+
+    // Запрашиваем доступы для расширения.
+    "permissions": [
+        "http://dev.1c-bitrix.ru/learning/course/*",
+        "https://dev.1c-bitrix.ru/learning/course/*",
+        "unlimited_storage",
+        "notifications",
+        "cookies",
+        "tabs",
+        "webNavigation"
+    ],
+
+    // Указываем страничку с выводом истории и управлением записями. 
+    // Располагается рядом с омнибоксом
+    "browser_action": {
+        "default_title": "BXC",
+        "default_popup": "popup.html" // Страничка с всплывашкой
+    },
+    "content_scripts": [{
+        "matches": [
+            "http://dev.1c-bitrix.ru/learning/course/*",
+            "https://dev.1c-bitrix.ru/learning/course/*"
+        ],
+        "js": [
+            "js/libs/jquery-1.10.1.min.js",
+            "js/background.js"
+        ],
+        "css": ["css/background.css"]
+    }]
+}
